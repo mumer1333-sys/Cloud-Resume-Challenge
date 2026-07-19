@@ -69,3 +69,23 @@ resource "aws_iam_role_policy" "lambda_dynamodb_policy" {
     ]
   })
 }
+data "archive_file" "lambda_zip" {
+  type        = "zip"
+  source_file = "${path.module}/../lambda/counter.py"
+  output_path = "${path.module}/../lambda/counter.zip"
+}
+
+resource "aws_lambda_function" "visitor_counter" {
+  filename         = data.archive_file.lambda_zip.output_path
+  function_name    = "visitor-counter"
+  role             = aws_iam_role.lambda_role.arn
+  handler          = "counter.lambda_handler"
+  runtime          = "python3.12"
+  source_code_hash = data.archive_file.lambda_zip.output_base64sha256
+
+  environment {
+    variables = {
+      TABLE_NAME = "visitor-counter"
+    }
+  }
+}
