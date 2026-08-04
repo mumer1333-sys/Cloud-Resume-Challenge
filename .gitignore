@@ -47,4 +47,4 @@ __pycache__/
 .DS_Store
 .env
 
-lambda/counter.zip
+Lambda/counter.zip
