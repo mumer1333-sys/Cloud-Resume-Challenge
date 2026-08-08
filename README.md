@@ -18,11 +18,11 @@ A serverless, SECURITY-first resume website built entirely on AWS using Infrastr
 
 | Decision | What it defends against | Why |
 |---|---|---|
-| S3 bucket fully private, all 4 public access blocks enabled | Direct public access to storage, bypassing CDN/HTTPS entirely | Storage should never be the public entry point — only the CDN should be |
+| S3 bucket fully private, all 4 public access blocks enabled | Direct public access to storage, bypassing CDN/HTTPS entirely | Storage should never be the public entry point only the CDN should be |
 | CloudFront Origin Access Control (OAC) instead of legacy OAI | Impersonation of CloudFront by other services | OAC uses SigV4 signed requests; it's AWS's current recommended approach, more secure than the deprecated OAI method |
-| S3 bucket policy scoped to a specific CloudFront distribution ARN (not a wildcard) | Any other AWS customer's CloudFront distribution reading this bucket | Least privilege — only *this* distribution should ever have read access |
+| S3 bucket policy scoped to a specific CloudFront distribution ARN (not a wildcard) | Any other AWS customer's CloudFront distribution reading this bucket | Least privilege only *this* distribution should ever have read access |
 | Lambda IAM role scoped to only `dynamodb:GetItem` / `dynamodb:UpdateItem` on one table ARN | Lambda being able to read/write other DynamoDB tables or perform destructive actions | Least privilege — the function only needs to increment a counter, nothing more |
-| Lambda Permission scoped to a specific API Gateway ARN | Any API Gateway in AWS being able to invoke this Lambda | AWS requires explicit invoke permission even between wired-up services — "deny by default" |
+| Lambda Permission scoped to a specific API Gateway ARN | Any API Gateway in AWS being able to invoke this Lambda | AWS requires explicit invoke permission even between wired up services "deny by default" |
 | Dedicated IAM user for GitHub Actions, scoped to only S3 object actions + CloudFront invalidation | A leaked CI/CD credential granting broad AWS account access | If this key ever leaked, the blast radius is limited to website files only |
 | AWS credentials stored as GitHub Secrets, never hardcoded | Credentials being exposed in a public repo's commit history | Secrets are encrypted at rest and injected only at workflow runtime |
 | HTTPS enforced via CloudFront (`redirect-to-https`) | Unencrypted traffic between visitor and site | All traffic in transit is encrypted, no exceptions |
@@ -32,7 +32,7 @@ A serverless, SECURITY-first resume website built entirely on AWS using Infrastr
 ### Static site delivery
 1. A visitor requests the CloudFront URL.
 2. CloudFront serves cached static files (HTML/CSS/JS) over HTTPS.
-3. On a cache miss, CloudFront retrieves the file from a private S3 bucket, authenticated via Origin Access Control (OAC) — the bucket itself has no public access.
+3. On a cache miss, CloudFront retrieves the file from a private S3 bucket, authenticated via Origin Access Control (OAC) the bucket itself has no public access.
 
 ### Visitor counter
 1. On page load, client-side JavaScript (`main.js`) calls an API Gateway HTTP API endpoint.
@@ -42,7 +42,7 @@ A serverless, SECURITY-first resume website built entirely on AWS using Infrastr
 
 ### Deployment
 1. A `git push` to `main` triggers a GitHub Actions workflow.
-2. The workflow syncs the `Website/` folder to S3 and invalidates the CloudFront cache — no manual deployment steps required.
+2. The workflow syncs the `Website/` folder to S3 and invalidates the CloudFront cache no manual deployment steps required.
 
 ## Possible future improvements
 - Custom domain via Route 53 + ACM certificate
