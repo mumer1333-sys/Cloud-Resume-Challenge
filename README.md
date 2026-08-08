@@ -1,4 +1,4 @@
-# Cloud Resume Challenge — Enhanced
+# Cloud Resume Challenge Enhanced
 
 A fully serverless AWS resume website built with security-first principles.
 
