@@ -189,3 +189,47 @@ resource "aws_s3_bucket_policy" "resume_policy" {
     ]
   })
 }
+resource "aws_iam_user" "github_actions" {
+  name = "github-actions-deploy"
+}
+
+resource "aws_iam_access_key" "github_actions" {
+  user = aws_iam_user.github_actions.name
+}
+
+resource "aws_iam_user_policy" "github_actions_policy" {
+  name = "github-actions-deploy-policy"
+  user = aws_iam_user.github_actions.name
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:PutObject",
+          "s3:DeleteObject",
+          "s3:ListBucket"
+        ]
+        Resource = [
+          aws_s3_bucket.resume.arn,
+          "${aws_s3_bucket.resume.arn}/*"
+        ]
+      },
+      {
+        Effect   = "Allow"
+        Action   = "cloudfront:CreateInvalidation"
+        Resource = aws_cloudfront_distribution.resume_cdn.arn
+      }
+    ]
+  })
+}
+
+output "github_actions_access_key_id" {
+  value = aws_iam_access_key.github_actions.id
+}
+
+output "github_actions_secret_access_key" {
+  value     = aws_iam_access_key.github_actions.secret
+  sensitive = true
+}
