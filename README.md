@@ -65,17 +65,18 @@ A serverless, SECURITY-first resume website built entirely on AWS using Infrastr
 
 ## Project structure
 
-├── Lambda/
-│   └── counter.py
-├── Terraform/
-│   ├── main.tf
-│   ├── variables.tf
-│   └── outputs.tf
-├── Website/
-│   ├── index.html
-│   ├── style.css
-│   └── main.js
-├── .github/workflows/
-│   └── deploy.yml
-└── README.md
-
+```
+Lambda/
+  counter.py
+Terraform/
+  main.tf
+  variables.tf
+  outputs.tf
+Website/
+  index.html
+  style.css
+  main.js
+.github/workflows/
+  deploy.yml
+README.md
+```
