@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Umer - Resume</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="resume">
+
+    <header class="resume-header">
+      <h1>Muhammad Umer</h1>
+      <p class="title">Aspiring Cloud Security Engineer</p>
+      <p class="contact">
+        <a href="www.linkedin.com/in/muhammad-umer-5043582b3" target="_blank">LinkedIn</a>
+      </p>
+    </header>
+
+    <section class="resume-section">
+      <h2>Education</h2>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">B.S. in Cybersecurity</span>
+          <span class="entry-date">In Progress</span>
+        </div>
+        <div class="entry-subtitle">Western Governors University</div>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">High School Diploma</span>
+        </div>
+        <div class="entry-subtitle">Panther Creek High School</div>
+      </div>
+    </section>
+
+    <section class="resume-section">
+      <h2>Experience</h2>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Associate Engineer, IT Help Desk</span>
+        </div>
+        <div class="entry-subtitle">NYC Public Schools via Nagarro</div>
+        <p class="entry-context">Supporting FERPA regulated systems across the largest US school district (900K students, 1,800+ schools)</p>
+        <ul>
+          <li>Performed identity and access management across IBM Security Identity Manager (ISIM), IBM Security Verify (ISV), IBM RACF, and Microsoft Active Directory, supporting user provisioning and deprovisioning, group membership validation, RBAC administration, MFA enrollment and resets, and identity verification prior to credential resets in accordance with least privilege and zero trust principles.</li>
+          <li>Supported privileged access management for IBM mainframe applications via IBM RACF, supporting account lifecycle operations and security policy enforcement for enterprise scale environments.</li>
+          <li>Handled compromised account incident response by collecting access history, verifying account exposure, initiating emergency credential resets, and escalating security findings to Tier 2/3 teams with documented triage notes.</li>
+          <li>Troubleshooted enterprise network and endpoint connectivity across VPN, VLAN, DNS, DHCP, TCP/IP, wireless access points, internet routing, and Azure Virtual Desktop environments using ping testing and IP verification across 1,800+ distributed sites.</li>
+          <li>Managed incident lifecycles in ServiceNow across account management, network connectivity, email, hardware, and application categories while maintaining SLA compliance and authoring knowledge base documentation that reduced repeat ticket volume.</li>
+          <li>Supported First Day of School surge operations during the district's peak demand period, maintaining SLA performance and access continuity as thousands of returning staff and students generated concurrent authentication and provisioning requests.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="resume-section">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <h3>Cloud & AWS</h3>
+          <p>Amazon Web Services (AWS), Amazon EC2, Amazon S3, Amazon VPC, Amazon Route 53, Amazon CloudWatch, Amazon EBS, Cloud Computing, Cloud Governance, Network Architecture</p>
+        </div>
+        <div class="skill-group">
+          <h3>Identity & Security</h3>
+          <p>Identity and Access Management (IAM), Identity Governance, Privileged Access Management, Role-Based Access Control (RBAC), Single Sign-On (SSO), Mainframe Security, Network Security, FERPA, Cybersecurity</p>
+        </div>
+        <div class="skill-group">
+          <h3>Networking & Systems</h3>
+          <p>TCP/IP, DNS, DHCP, VPN, Active Directory, Linux System Administration, Secure Shell (SSH), Remote Access, Microsoft 365</p>
+        </div>
+        <div class="skill-group">
+          <h3>IT Service Management</h3>
+          <p>ServiceNow, Ticketing Systems, Incident Management, Service-Level Agreements (SLA), Remote User Support, Remote Troubleshooting</p>
+        </div>
+        <div class="skill-group">
+          <h3>Programming & AI</h3>
+          <p>Python, Artificial Intelligence (AI), Large Language Models (LLM), Retrieval-Augmented Generation (RAG)</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="resume-section">
+      <h2>Certifications</h2>
+      <ul class="cert-list">
+        <li>CompTIA Security+ (In Progress)</li>
+        <li>AWS Solutions Architect Associate (In Progress)</li>
+      </ul>
+    </section>
+
+    <section class="resume-section">
+      <h2>Projects</h2>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">Cloud Resume Challenge</span>
+        </div>
+        <p>Serverless resume website built on AWS with a visitor counter, deployed using Infrastructure as Code and a CI/CD pipeline. Architecture includes S3, CloudFront, API Gateway, Lambda, and DynamoDB, provisioned entirely with Terraform.</p>
+      </div>
+      <div class="entry">
+        <div class="entry-header">
+          <span class="entry-title">EC2 CloudWatch Project</span>
+        </div>
+        <p>AWS project monitoring EC2 instance health and performance metrics using CloudWatch.</p>
+      </div>
+    </section>
+
+    <footer class="visitor-counter">
+      <p>Visitors: <span id="visitor-count">Loading...</span></p>
+    </footer>
+
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
